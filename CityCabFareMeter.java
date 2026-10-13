@@ -1,0 +1,4 @@
+import java.util.*;
+abstract class Cab {double km;boolean night;Cab(double d,boolean n){km=d;night=n;}abstract double rate();double fare(){double f=Math.max(100,km*rate());return night?f*1.2:f;}}
+class MiniCab extends Cab{MiniCab(double d,boolean n){super(d,n);}double rate(){return 10;}}class SedanCab extends Cab{SedanCab(double d,boolean n){super(d,n);}double rate(){return 14;}}class SUVCab extends Cab{SUVCab(double d,boolean n){super(d,n);}double rate(){return 18;}}
+public class CityCabFareMeter {public static void main(String[] args){Scanner sc=new Scanner(System.in);int n=sc.nextInt();double total=0;for(int i=0;i<n;i++){String t=sc.next();double d=sc.nextDouble();boolean night=sc.nextBoolean();Cab c=switch(t){case "MINI"->new MiniCab(d,night);case "SEDAN"->new SedanCab(d,night);default->new SUVCab(d,night);};double f=c.fare();System.out.printf("%s: %.2f%n",t,f);total+=f;}System.out.printf("Total: %.2f%n",total);}}

@@ -1,0 +1,4 @@
+import java.util.*;
+abstract class Ticket {static final double CONVENIENCE_FEE=20;int count;Ticket(int c){count=c;}abstract double price();double amount(){return count*(price()+CONVENIENCE_FEE);}}
+class RegularTicket extends Ticket{RegularTicket(int c){super(c);}double price(){return 150;}}class PremiumTicket extends Ticket{PremiumTicket(int c){super(c);}double price(){return 250;}}class ReclinerTicket extends Ticket{ReclinerTicket(int c){super(c);}double price(){return 400;}}
+public class MovieTicketCounter {public static void main(String[] args){Scanner sc=new Scanner(System.in);int n=sc.nextInt();double total=0;for(int i=0;i<n;i++){String s=sc.next();int c=sc.nextInt();Ticket t=switch(s){case "REGULAR"->new RegularTicket(c);case "PREMIUM"->new PremiumTicket(c);default->new ReclinerTicket(c);};double a=t.amount();System.out.printf("%s: %.2f%n",s,a);total+=a;}System.out.printf("Total: %.2f%n",total);}}

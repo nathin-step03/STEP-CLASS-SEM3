@@ -1,0 +1,4 @@
+import java.util.*;
+abstract class CollegeStudent {String name;CollegeStudent(String n){name=n;}abstract double fee();}
+class DayScholar extends CollegeStudent{DayScholar(String n){super(n);}double fee(){return 52000;}}class Hosteller extends CollegeStudent{Hosteller(String n){super(n);}double fee(){return 100000;}}class ScholarshipStudent extends CollegeStudent{ScholarshipStudent(String n){super(n);}double fee(){return 32000;}}
+public class CollegeFeeCounter {public static void main(String[] args){Scanner sc=new Scanner(System.in);int n=sc.nextInt();double total=0;for(int i=0;i<n;i++){String type=sc.next(),name=sc.next();CollegeStudent s=switch(type){case "DAY_SCHOLAR"->new DayScholar(name);case "HOSTELLER"->new Hosteller(name);default->new ScholarshipStudent(name);};System.out.printf("%s: %.2f%n",name,s.fee());total+=s.fee();}System.out.printf("Total Collected: %.2f%n",total);}}
