@@ -1,0 +1,2 @@
+class PasswordStrength {private final String password;PasswordStrength(String password){this.password=password;}String getStrength(){int n=password.length();return n<6?"Weak":n<=9?"Medium":"Strong";}}
+public class PasswordChecker {public static void main(String[] args){System.out.println(new PasswordStrength("abcd").getStrength());System.out.println(new PasswordStrength("abcdefghij").getStrength());}}
